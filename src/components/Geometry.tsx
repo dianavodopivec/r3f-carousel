@@ -3,7 +3,7 @@ import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-const image = "src/assets/images/carousel-images.png";
+const image = "./images/carousel-images.png";
 
 export const Geometry = () => {
   const geometryTarget = useRef<THREE.Mesh | null>(null)
