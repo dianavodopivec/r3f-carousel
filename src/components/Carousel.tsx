@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Geometry } from "./Geometry";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import {
   Bloom,
   EffectComposer,

@@ -10,7 +10,7 @@ export const Geometry = () => {
   const texture = useTexture(image);
 
   //✨useFrame receive state + clock delta
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if(geometryTarget.current) {
     geometryTarget.current.rotation.y += delta;
     }
