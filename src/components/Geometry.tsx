@@ -1,21 +1,21 @@
 import * as THREE from "three";
+import { useRef } from "react";
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-
-const image = "./images/carousel-images.png";
+import { useCarouselControls } from "./UIControls";
 
 export const Geometry = () => {
   const geometryTarget = useRef<THREE.Mesh | null>(null)
-  const texture = useTexture(image);
+  const { rotationSpeed, texture: texturePath } = useCarouselControls()
+  const texture = useTexture(texturePath);
   const accumulatedTime = useRef(0)
 
   //✨useFrame receive state + clock delta
   useFrame((_, delta) => {
-    if(geometryTarget.current) {
+    if (geometryTarget.current) {
       accumulatedTime.current += delta
 
-      geometryTarget.current.rotation.y += delta;
+      geometryTarget.current.rotation.y += delta * rotationSpeed
 
       const zAxis = 0.2 * 1.5 * Math.sin(accumulatedTime.current * 0.3)
       geometryTarget.current.rotation.z = zAxis

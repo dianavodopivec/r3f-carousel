@@ -6,23 +6,35 @@ import {
   EffectComposer,
   ToneMapping,
 } from "@react-three/postprocessing";
+import { useCarouselControls } from "./UIControls";
 
 export const Carousel = () => {
+  const {
+    directionalLightIntensity,
+    bloomIntensity,
+    luminanceThreshold,
+    luminanceSmoothing,
+  } = useCarouselControls();
+
   return (
     <Canvas camera={{ fov: 70 }} flat>
-      <directionalLight intensity={4} position={[0, 1, 2.5]}/>
+      <directionalLight intensity={directionalLightIntensity} position={[0, 1, 2.5]} />
       <Geometry />
       <EffectComposer>
         <Bloom
           mipmapBlur
-          intensity={0.2}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.1}
+          intensity={bloomIntensity}
+          luminanceThreshold={luminanceThreshold}
+          luminanceSmoothing={luminanceSmoothing}
         />
       </EffectComposer>
-      <ToneMapping adaptive/>
+      <ToneMapping adaptive />
       <ambientLight />
-      <OrbitControls enableZoom={false}  minAzimuthAngle={1} maxAzimuthAngle={0}/>
+      <OrbitControls
+        enableZoom={false}
+        minAzimuthAngle={1}
+        maxAzimuthAngle={0}
+      />
     </Canvas>
   );
 };
