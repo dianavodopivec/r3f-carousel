@@ -8,11 +8,17 @@ const image = "./images/carousel-images.png";
 export const Geometry = () => {
   const geometryTarget = useRef<THREE.Mesh | null>(null)
   const texture = useTexture(image);
+  const accumulatedTime = useRef(0)
 
   //✨useFrame receive state + clock delta
   useFrame((_, delta) => {
     if(geometryTarget.current) {
-    geometryTarget.current.rotation.y += delta;
+      accumulatedTime.current += delta
+
+      geometryTarget.current.rotation.y += delta;
+
+      const zAxis = 0.2 * 1.5 * Math.sin(accumulatedTime.current * 0.3)
+      geometryTarget.current.rotation.z = zAxis
     }
   })
 

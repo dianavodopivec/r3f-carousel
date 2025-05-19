@@ -10,6 +10,7 @@ import {
 export const Carousel = () => {
   return (
     <Canvas camera={{ fov: 70 }} flat>
+      <directionalLight intensity={4} position={[0, 1, 2.5]}/>
       <Geometry />
       <EffectComposer>
         <Bloom
@@ -19,7 +20,7 @@ export const Carousel = () => {
           luminanceSmoothing={0.1}
         />
       </EffectComposer>
-      <ToneMapping adaptive />
+      <ToneMapping adaptive/>
       <ambientLight />
       <OrbitControls enableZoom={false}  minAzimuthAngle={1} maxAzimuthAngle={0}/>
     </Canvas>
