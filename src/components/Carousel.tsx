@@ -18,7 +18,7 @@ export const Carousel = () => {
 
   return (
     <Canvas camera={{ fov: 70 }} flat>
-      <directionalLight intensity={directionalLightIntensity} position={[0, 1, 2.5]} />
+      <directionalLight intensity={directionalLightIntensity} position={[2, 1, 3]} />
       <Geometry />
       <EffectComposer>
         <Bloom
